@@ -233,19 +233,17 @@ export default function Footer({ settings = defaultSettings }: { settings?: Site
           </div>
         </div>
 
-        {/* ── Bottom bar ── */}
-        <div
-          className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-2 text-center sm:text-left"
-          style={{ borderTop: '1px solid rgba(0,0,0,0.07)' }}
-        >
-          <p className="text-xs text-slate-500">
-            © {new Date().getFullYear()} {s.brand_en_part1} {s.brand_en_part2} —{' '}
-            <span className="font-ku">{s.brand_ku}</span>. All rights reserved.
-          </p>
-          <p className="text-xs text-slate-400 font-ku">
-            {s.footer_desc_ku}
-          </p>
-        </div>
+      </div>
+
+      {/* ── Bottom bar — full width so it centers on any screen size ── */}
+      <div
+        className="relative z-10 w-full py-6 flex flex-col items-center justify-center gap-1 text-center px-4"
+        style={{ borderTop: '1px solid rgba(0,0,0,0.07)' }}
+      >
+        <p className="text-xs text-slate-500">
+          © {new Date().getFullYear()} {s.brand_en_part1} {s.brand_en_part2} —{' '}
+          <span className="font-ku">{s.brand_ku}</span>. All rights reserved.
+        </p>
       </div>
     </footer>
   )

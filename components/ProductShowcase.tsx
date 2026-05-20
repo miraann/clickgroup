@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import {
   UtensilsCrossed, ChefHat, Stethoscope, Smartphone, Globe,
@@ -149,15 +149,35 @@ export default function ProductShowcase({ products }: { products?: DBProduct[] }
   const list = products?.length ? products : FALLBACK
   const [active, setActive] = useState(0)
   const [showKu, setShowKu] = useState(true)
+  const [paused, setPaused] = useState(false)
+  const [resetKey, setResetKey] = useState(0)
   const product = list[active]
   const glow     = hexToRgba(product.accent, 0.18)
   const iconGlow = hexToRgba(product.accent, 0.25)
+
+  // Auto-advance every 10s; resets on manual click or hover release
+  useEffect(() => {
+    if (paused) return
+    const timer = setInterval(() => {
+      setActive(prev => (prev + 1) % list.length)
+    }, 5000)
+    return () => clearInterval(timer)
+  }, [paused, list.length, resetKey])
+
+  const handleTabClick = (i: number) => {
+    setActive(i)
+    setResetKey(k => k + 1)
+  }
 
   return (
     <section
       id="systems"
       className="relative py-20 lg:py-36 overflow-hidden"
       style={{ background: 'linear-gradient(180deg, #ffffff 0%, #f8fafc 50%, #f1f5f9 100%)' }}
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+      onTouchStart={() => setPaused(true)}
+      onTouchEnd={() => setPaused(false)}
     >
       {/* Top accent line */}
       <div
@@ -207,7 +227,7 @@ export default function ProductShowcase({ products }: { products?: DBProduct[] }
             return (
               <motion.button
                 key={p.id}
-                onClick={() => setActive(i)}
+                onClick={() => handleTabClick(i)}
                 whileTap={{ scale: 0.93 }}
                 aria-label={`${p.name_en} — ${p.name_ku}`}
                 className="relative flex items-center gap-0 sm:gap-2.5 justify-center
@@ -468,7 +488,7 @@ export default function ProductShowcase({ products }: { products?: DBProduct[] }
                 </ul>
 
                 {/* Bottom note */}
-                <div className={`mt-8 sm:mt-10 pt-6 sm:pt-7 flex items-center gap-3${showKu ? ' flex-row-reverse' : ''}`} style={{ borderTop: '1px solid rgba(0,0,0,0.07)' }}>
+                <div className="mt-8 sm:mt-10 pt-6 sm:pt-7 flex items-center gap-3" style={{ borderTop: '1px solid rgba(0,0,0,0.07)' }}>
                   <MonitorSmartphone className="w-4 h-4 text-slate-400 flex-shrink-0" />
                   <span className={`text-xs text-slate-500${showKu ? ' font-ku' : ''}`}>
                     {showKu ? 'بەردەستە لە دێسکتۆپ، تابلێت و مۆبایل' : 'Available on Desktop, Tablet & Mobile'}

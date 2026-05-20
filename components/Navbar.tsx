@@ -62,7 +62,7 @@ export default function Navbar({ settings = defaultSettings }: { settings?: Site
                 src={s.logo_url}
                 alt={`${s.brand_en_part1}${s.brand_en_part2} logo`}
                 className="object-contain"
-                style={{ width: 75, height: 75 }}
+                style={{ width: 60, height: 60 }}
               />
             ) : (
               <div className="relative flex items-center justify-center w-9 h-9 rounded-xl bg-gradient-to-br from-yellow-400 to-yellow-500 shadow-lg shadow-yellow-400/40">
