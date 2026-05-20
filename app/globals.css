@@ -1,0 +1,61 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #ffffff;
+  color: #0f172a;
+  overflow-x: hidden;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #FACC15, #EAB308);
+  border-radius: 10px;
+}
+
+/* Hide scrollbar utility */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Kurdish font — ku.otf loaded via next/font/local as --font-ku */
+.font-ku {
+  font-family: var(--font-ku), 'Arabic Typesetting', 'Traditional Arabic', sans-serif;
+}
+
+/* Selection colour */
+::selection {
+  background: rgba(250, 204, 21, 0.25);
+  color: #facc15;
+}
+
+@layer components {
+  .glass-card {
+    @apply backdrop-blur-xl border border-black/8 rounded-2xl;
+    background: linear-gradient(135deg, rgba(255,255,255,0.8) 0%, rgba(248,250,252,0.9) 100%);
+  }
+
+  .gold-glow {
+    box-shadow: 0 0 30px rgba(245, 158, 11, 0.25), 0 0 60px rgba(245, 158, 11, 0.08);
+  }
+
+  .text-gold {
+    @apply bg-gradient-to-r from-amber-400 to-amber-600 bg-clip-text text-transparent;
+  }
+}
