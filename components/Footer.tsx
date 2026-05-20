@@ -121,15 +121,24 @@ export default function Footer({ settings = defaultSettings }: { settings?: Site
           {/* ── Brand ── */}
           <div className="space-y-6">
             <div className="flex items-center gap-2.5">
-              <div
-                className="relative flex items-center justify-center w-10 h-10 rounded-xl"
-                style={{
-                  background: 'linear-gradient(135deg, #facc15, #eab308)',
-                  boxShadow: '0 4px 20px rgba(250,204,21,0.4)',
-                }}
-              >
-                <Zap className="w-5 h-5 text-white fill-white" />
-              </div>
+              {s.logo_url ? (
+                <img
+                  src={s.logo_url}
+                  alt={`${s.brand_en_part1}${s.brand_en_part2} logo`}
+                  className="object-contain"
+                  style={{ width: 60, height: 60 }}
+                />
+              ) : (
+                <div
+                  className="relative flex items-center justify-center w-10 h-10 rounded-xl"
+                  style={{
+                    background: 'linear-gradient(135deg, #facc15, #eab308)',
+                    boxShadow: '0 4px 20px rgba(250,204,21,0.4)',
+                  }}
+                >
+                  <Zap className="w-5 h-5 text-white fill-white" />
+                </div>
+              )}
               <div className="flex flex-col leading-none">
                 <span className="font-black text-xl" style={{ color: '#1e3a8a' }}>
                   {s.brand_en_part1}<span className="text-yellow-500">{s.brand_en_part2}</span>
