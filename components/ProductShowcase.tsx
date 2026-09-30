@@ -146,7 +146,7 @@ const FALLBACK: DBProduct[] = [
 
 // ── Main component ────────────────────────────────────────────
 export default function ProductShowcase({ products }: { products?: DBProduct[] }) {
-  const list = products?.length ? products : FALLBACK
+  const list = products?.length ? products : FALLBACK // fallback only when DB is unreachable; page.tsx hides the section when empty
   const [active, setActive] = useState(0)
   const [showKu, setShowKu] = useState(true)
   const [paused, setPaused] = useState(false)

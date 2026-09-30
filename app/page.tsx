@@ -36,17 +36,19 @@ async function getSlides(): Promise<Slide[]> {
   }
 }
 
-async function getProducts(): Promise<DBProduct[]> {
+// null = query failed (showcase uses its built-in fallback); [] = admin removed all products
+async function getProducts(): Promise<DBProduct[] | null> {
   try {
     const supabase = await createClient()
-    const { data } = await supabase
+    const { data, error } = await supabase
       .from('products')
       .select('*')
       .eq('active', true)
       .order('order_index', { ascending: true })
-    return (data as DBProduct[]) ?? []
+    if (error || !data) return null
+    return data as DBProduct[]
   } catch {
-    return []
+    return null
   }
 }
 
@@ -93,7 +95,7 @@ export default async function Home() {
       <main>
         <HeroSection settings={settings} />
         <HeroSlider slides={slides} />
-        <ProductShowcase products={products} />
+        {products?.length !== 0 && <ProductShowcase products={products ?? undefined} />}
         <LeadForm businessTypes={businessTypes} systems={systems} />
       </main>
       <Footer settings={settings} />
