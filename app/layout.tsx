@@ -16,17 +16,20 @@ const kurdishFont = localFont({
 })
 
 export const metadata: Metadata = {
-  title: 'Click Group | کلیک گروپ — Technology Solutions',
+  metadataBase: new URL('https://miranbarzanji.site'),
+  title: 'Miran Barzanji | میران بەرزنجی — Technology Solutions',
   description:
     'Premium technology solutions for businesses — Digital Menu, Restaurant POS, Clinic Management, Mobile Apps & Web Development. Based in Kurdistan.',
-  keywords: ['Click Group', 'کلیک گروپ', 'Restaurant POS', 'Digital Menu', 'Clinic System', 'Kurdistan Technology'],
+  keywords: ['Miran Barzanji', 'میران بەرزنجی', 'Restaurant POS', 'Digital Menu', 'Clinic System', 'Kurdistan Technology'],
   icons: {
     icon: '/icon.png',
     shortcut: '/icon.png',
     apple: '/icon.png',
   },
   openGraph: {
-    title: 'Click Group | کلیک گروپ',
+    title: 'Miran Barzanji | میران بەرزنجی',
+    url: 'https://miranbarzanji.site',
+    images: ['/logo.jpg'],
     description: 'Premium IT solutions tailored for modern businesses.',
     type: 'website',
   },

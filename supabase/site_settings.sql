@@ -8,9 +8,9 @@ create table if not exists public.site_settings (
   constraint site_settings_single_row check (id = 1),
 
   -- Brand / Logo
-  brand_en_part1   text not null default 'Click',
-  brand_en_part2   text not null default 'Group',
-  brand_ku         text not null default 'کلیک گروپ',
+  brand_en_part1   text not null default 'Miran',
+  brand_en_part2   text not null default 'Barzanji',
+  brand_ku         text not null default 'میران بەرزنجی',
   logo_tagline     text not null default 'Technology',
 
   -- Hero badge

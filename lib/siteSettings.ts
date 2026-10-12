@@ -36,10 +36,10 @@ export type SiteSettings = {
 
 export const defaultSettings: SiteSettings = {
   id: 1,
-  logo_url: null,
-  brand_en_part1: 'Click',
-  brand_en_part2: 'Group',
-  brand_ku: 'کلیک گروپ',
+  logo_url: '/logo.jpg',
+  brand_en_part1: 'Miran',
+  brand_en_part2: 'Barzanji',
+  brand_ku: 'میران بەرزنجی',
   logo_tagline: 'Technology',
   badge_ku: 'شیرکەتی تەکنەلۆژیای زانیاری',
   badge_en: 'Information Technology',

@@ -1,7 +1,7 @@
 import { createClient } from '@/lib/supabase/server'
 import { redirect } from 'next/navigation'
 import Link from 'next/link'
-import { Zap, Package, Home, Layers, Tag, Inbox } from 'lucide-react'
+import { Package, Home, Layers, Tag, Inbox } from 'lucide-react'
 import SignOutButton from '../_components/SignOutButton'
 
 export default async function ProtectedLayout({ children }: { children: React.ReactNode }) {
@@ -19,15 +19,14 @@ export default async function ProtectedLayout({ children }: { children: React.Re
         {/* Logo */}
         <div className="px-5 py-5 border-b border-slate-100">
           <Link href="/admin/products" className="flex items-center gap-2.5">
-            <div
-              className="flex items-center justify-center w-8 h-8 rounded-xl"
-              style={{ background: 'linear-gradient(135deg, #facc15, #eab308)', boxShadow: '0 2px 10px rgba(250,204,21,0.35)' }}
-            >
-              <Zap className="w-4 h-4 text-white fill-white" />
-            </div>
+            <img
+              src="/logo.jpg"
+              alt="Miran Barzanji"
+              className="w-8 h-8 rounded-full object-cover ring-2 ring-yellow-400/60"
+            />
             <div className="flex flex-col leading-none">
               <span className="font-black text-base" style={{ color: '#1e3a8a' }}>
-                Click<span className="text-yellow-500">Group</span>
+                Miran <span className="text-yellow-500">Barzanji</span>
               </span>
               <span className="text-[9px] font-semibold tracking-[0.2em] uppercase text-slate-400">
                 Admin

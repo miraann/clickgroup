@@ -231,7 +231,7 @@ export default function HeroSlider({ slides }: { slides: Slide[] }) {
                   transition={{ delay: 0.1, duration: 0.45 }}
                 >
                   <span className="w-1.5 h-1.5 rounded-full bg-yellow-400 animate-pulse" />
-                  ClickGroup
+                  Miran Barzanji
                 </motion.div>
 
                 {/* English title */}

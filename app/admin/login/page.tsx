@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { createClient } from '@/lib/supabase/client'
 import { useRouter } from 'next/navigation'
-import { Zap, Loader2, AlertCircle } from 'lucide-react'
+import { Loader2, AlertCircle } from 'lucide-react'
 
 export default function AdminLogin() {
   const [email, setEmail] = useState('')
@@ -35,15 +35,14 @@ export default function AdminLogin() {
 
         {/* Logo */}
         <div className="flex items-center justify-center gap-2.5 mb-8">
-          <div
-            className="flex items-center justify-center w-10 h-10 rounded-xl shadow-lg"
-            style={{ background: 'linear-gradient(135deg, #facc15, #eab308)', boxShadow: '0 4px 20px rgba(250,204,21,0.4)' }}
-          >
-            <Zap className="w-5 h-5 text-white fill-white" />
-          </div>
+          <img
+            src="/logo.jpg"
+            alt="Miran Barzanji"
+            className="w-10 h-10 rounded-full object-cover shadow-lg ring-2 ring-yellow-400/60"
+          />
           <div className="flex flex-col leading-none">
             <span className="font-black text-xl" style={{ color: '#1e3a8a' }}>
-              Click<span className="text-yellow-500">Group</span>
+              Miran <span className="text-yellow-500">Barzanji</span>
             </span>
             <span className="text-[9px] font-semibold tracking-[0.2em] uppercase text-slate-400">
               Admin Panel
@@ -54,7 +53,7 @@ export default function AdminLogin() {
         {/* Card */}
         <div className="bg-white rounded-2xl border border-slate-200 shadow-xl shadow-slate-200/60 p-8">
           <h1 className="text-2xl font-bold text-slate-900 mb-1">Sign in</h1>
-          <p className="text-slate-500 text-sm mb-6">Access the Click Group admin dashboard</p>
+          <p className="text-slate-500 text-sm mb-6">Access the Miran Barzanji admin dashboard</p>
 
           <form onSubmit={handleLogin} className="space-y-4">
             <div>
@@ -68,7 +67,7 @@ export default function AdminLogin() {
                 required
                 autoComplete="email"
                 className="w-full px-4 py-3 rounded-xl text-sm text-slate-900 bg-slate-50 border border-slate-200 focus:outline-none focus:border-yellow-400 focus:bg-white transition-all placeholder-slate-400"
-                placeholder="admin@clickgroup.com"
+                placeholder="admin@miranbarzanji.site"
               />
             </div>
 
@@ -111,7 +110,7 @@ export default function AdminLogin() {
         </div>
 
         <p className="text-center text-xs text-slate-400 mt-6">
-          Click Group · Admin Portal
+          Miran Barzanji · Admin Portal
         </p>
       </div>
     </div>

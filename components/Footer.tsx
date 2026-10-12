@@ -124,9 +124,9 @@ export default function Footer({ settings = defaultSettings }: { settings?: Site
               {s.logo_url ? (
                 <img
                   src={s.logo_url}
-                  alt={`${s.brand_en_part1}${s.brand_en_part2} logo`}
-                  className="object-contain"
-                  style={{ width: 60, height: 60 }}
+                  alt={`${s.brand_en_part1} ${s.brand_en_part2}`}
+                  className="object-cover rounded-full ring-2 ring-yellow-400/60"
+                  style={{ width: 52, height: 52 }}
                 />
               ) : (
                 <div
@@ -141,7 +141,7 @@ export default function Footer({ settings = defaultSettings }: { settings?: Site
               )}
               <div className="flex flex-col leading-none">
                 <span className="font-black text-xl" style={{ color: '#1e3a8a' }}>
-                  {s.brand_en_part1}<span className="text-yellow-500">{s.brand_en_part2}</span>
+                  {s.brand_en_part1}{' '}<span className="text-yellow-500">{s.brand_en_part2}</span>
                 </span>
                 <span className="text-[9px] font-semibold tracking-[0.22em] uppercase text-yellow-600/70">
                   {s.logo_tagline}

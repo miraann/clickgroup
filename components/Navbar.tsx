@@ -60,9 +60,9 @@ export default function Navbar({ settings = defaultSettings }: { settings?: Site
             {s.logo_url ? (
               <img
                 src={s.logo_url}
-                alt={`${s.brand_en_part1}${s.brand_en_part2} logo`}
-                className="object-contain"
-                style={{ width: 60, height: 60 }}
+                alt={`${s.brand_en_part1} ${s.brand_en_part2}`}
+                className="object-cover rounded-full ring-2 ring-yellow-400/60"
+                style={{ width: 44, height: 44 }}
               />
             ) : (
               <div className="relative flex items-center justify-center w-9 h-9 rounded-xl bg-gradient-to-br from-yellow-400 to-yellow-500 shadow-lg shadow-yellow-400/40">
@@ -72,7 +72,7 @@ export default function Navbar({ settings = defaultSettings }: { settings?: Site
             )}
             <div className="flex flex-col leading-none">
               <span className="font-black text-lg tracking-tight" style={{ color: '#1e3a8a' }}>
-                {s.brand_en_part1}<span className="text-yellow-400">{s.brand_en_part2}</span>
+                {s.brand_en_part1}{' '}<span className="text-yellow-400">{s.brand_en_part2}</span>
               </span>
               <span className="text-[9px] font-semibold tracking-[0.2em] uppercase" style={{ color: '#1e3a8a99' }}>
                 {s.logo_tagline}

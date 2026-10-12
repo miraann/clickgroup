@@ -193,7 +193,7 @@ export default function HeroSection({ settings = defaultSettings }: { settings?:
           className="font-black leading-none tracking-tight mb-4"
           style={{ fontSize: 'clamp(3.5rem, 12vw, 9rem)' }}
         >
-          <span style={{ color: '#1e3a8a' }}>{s.brand_en_part1}</span>
+          <span style={{ color: '#1e3a8a' }}>{s.brand_en_part1}</span>{' '}
           <span
             style={{
               backgroundImage: 'linear-gradient(135deg, #facc15 0%, #eab308 60%, #ca8a04 100%)',
