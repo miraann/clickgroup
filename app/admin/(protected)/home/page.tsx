@@ -73,11 +73,18 @@ function LogoUpload({ url, onChange }: { url: string | null; onChange: (v: strin
     const file = e.target.files?.[0]
     if (!file) return
     setUploading(true)
-    const ext = file.name.split('.').pop() ?? 'png'
-    const path = `logo/logo.${ext}`
-    await supabase.storage.from('site-assets').upload(path, file, { upsert: true })
-    const { data } = supabase.storage.from('site-assets').getPublicUrl(path)
-    onChange(data.publicUrl)
+    const ext = (file.name.split('.').pop() ?? 'png').toLowerCase()
+    // Unique filename so the URL changes on every upload (avoids CDN/browser cache serving the old logo)
+    const path = `logo/logo-${Date.now()}.${ext}`
+    const { error } = await supabase.storage
+      .from('site-assets')
+      .upload(path, file, { upsert: true, contentType: file.type, cacheControl: '3600' })
+    if (error) {
+      alert(`Logo upload failed: ${error.message}`)
+    } else {
+      const { data } = supabase.storage.from('site-assets').getPublicUrl(path)
+      onChange(data.publicUrl)
+    }
     setUploading(false)
     e.target.value = ''
   }

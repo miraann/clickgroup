@@ -10,6 +10,13 @@ export default async function ProtectedLayout({ children }: { children: React.Re
 
   if (!user) redirect('/admin/login')
 
+  const { data: settings } = await supabase
+    .from('site_settings')
+    .select('logo_url')
+    .eq('id', 1)
+    .single()
+  const logoUrl = settings?.logo_url || '/logo.jpg'
+
   return (
     <div className="flex min-h-screen bg-slate-50">
 
@@ -20,7 +27,7 @@ export default async function ProtectedLayout({ children }: { children: React.Re
         <div className="px-5 py-5 border-b border-slate-100">
           <Link href="/admin/products" className="flex items-center gap-2.5">
             <img
-              src="/logo.jpg"
+              src={logoUrl}
               alt="Miran Barzanji"
               className="w-8 h-8 rounded-full object-cover ring-2 ring-yellow-400/60"
             />
