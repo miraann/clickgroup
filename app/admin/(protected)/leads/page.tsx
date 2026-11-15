@@ -191,7 +191,7 @@ export default function LeadsPage() {
                     </span>
                     <span className="flex items-center gap-1.5">
                       <Monitor className="w-3.5 h-3.5 text-slate-400" />
-                      {SYSTEM_LABELS[lead.system] ?? lead.system}
+                      {Object.hasOwn(SYSTEM_LABELS, lead.system) ? SYSTEM_LABELS[lead.system] : lead.system}
                     </span>
                   </div>
                   {lead.note && (
