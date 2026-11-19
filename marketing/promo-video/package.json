@@ -1,0 +1,16 @@
+{
+  "name": "clickgroup-brand-promo",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "prep": "python prep_assets.py && node build_icons.mjs",
+    "stills": "node render.mjs stills",
+    "render:916": "node render.mjs video 4 916 && python gen_audio.py out-916/sfx.json out-916/audio.wav && node mux.mjs out-916/video.mp4 out-916/audio.wav ../ClickGroup-Brand-9x16.mp4",
+    "render:45": "node render.mjs video 4 45 && python gen_audio.py out-45/sfx.json out-45/audio.wav && node mux.mjs out-45/video.mp4 out-45/audio.wav ../ClickGroup-Brand-4x5.mp4"
+  },
+  "dependencies": {
+    "ffmpeg-static": "^5.3.0",
+    "puppeteer-core": "^25.12.0",
+    "qrcode": "^1.5.4"
+  }
+}
